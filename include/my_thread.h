@@ -1,0 +1,1 @@
+void ThreadFunc(int num);
