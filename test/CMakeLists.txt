@@ -31,7 +31,9 @@ endif()
 # ----------------------------
 file(GLOB TARGET_SOURCES #GLOG_RECURSEを使うと指定したフォルダ以下は再帰的にプロジェクトに含まれる.
   ./*.cpp
+  ./atcoder/*.cpp
 )
+#message(STATUS "TARGET_SOURCES: ${TARGET_SOURCES}")
 # -------------
 # 
 # -------------
@@ -42,15 +44,6 @@ if(MSVC)
   target_link_libraries(TestSample1 debug gtestd gmockd ${PROJECT_LIB_NAME_SRC})
 else()
   target_link_libraries(TestSample1 gtest ${GTEST_LDFLAGS} gcov ${PROJECT_LIB_NAME_SRC})
-  # set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall")
-  # ビルドオプションに「--coverage」を追加.
-  # gcov用のファイルを出力するオプションで、build/test/CMakeFiles/UnitTestExecutor.dir配下に.gcnoというファイルが生成されます
-  # コンパイル時には「-fprofile-arcs -ftest-coverage」、リンク時には「-lgcov」に付けてくれる便利なものです。
-  set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} --coverage")
-  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --coverage")
-  message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
-  message(STATUS "CMAKE_EXE_LINKER_FLAGS: ${CMAKE_EXE_LINKER_FLAGS}")
-
 endif()
 
 # -------------

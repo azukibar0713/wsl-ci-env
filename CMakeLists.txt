@@ -21,6 +21,15 @@ set(CMAKE_BUILD_TYPE Debug)
 include(./DoClangTidy.cmake)
 include(./FormatFilesWithClangFormat.cmake)
 
+# set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall")
+# ビルドオプションに「--coverage」を追加.
+# gcov用のファイルを出力するオプションで、build/test/CMakeFiles/UnitTestExecutor.dir配下に.gcnoというファイルが生成されます
+# コンパイル時には「-fprofile-arcs -ftest-coverage」、リンク時には「-lgcov」に付けてくれる便利なものです。
+set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} --coverage")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --coverage")
+message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
+message(STATUS "CMAKE_EXE_LINKER_FLAGS: ${CMAKE_EXE_LINKER_FLAGS}")
+
 # ----------------------------
 # プロジェクト名, 言語を指定.
 # ----------------------------
