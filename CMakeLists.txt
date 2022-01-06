@@ -16,6 +16,9 @@ set(ENV{PKG_CONFIG_PATH} "${CMAKE_SOURCE_DIR}/pkgconfig/ubuntu")
 # ----------------------------
 # 共通設定
 # ----------------------------
+set(CMAKE_C_COMPILER "/usr/bin/clang" CACHE string "clang compiler" FORCE)
+set(CMAKE_CXX_COMPILER "/usr/bin/clang++" CACHE string "clang++ compiler" FORCE)
+
 #enable_testing()
 set(CMAKE_BUILD_TYPE Debug)
 include(./DoClangTidy.cmake)
